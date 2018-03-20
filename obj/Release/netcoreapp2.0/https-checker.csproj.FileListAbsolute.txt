@@ -1,0 +1,10 @@
+C:\Users\Chris\Documents\git\https-checker\bin\Release\netcoreapp2.0\https-checker.deps.json
+C:\Users\Chris\Documents\git\https-checker\bin\Release\netcoreapp2.0\https-checker.runtimeconfig.json
+C:\Users\Chris\Documents\git\https-checker\bin\Release\netcoreapp2.0\https-checker.runtimeconfig.dev.json
+C:\Users\Chris\Documents\git\https-checker\bin\Release\netcoreapp2.0\https-checker.dll
+C:\Users\Chris\Documents\git\https-checker\bin\Release\netcoreapp2.0\https-checker.pdb
+C:\Users\Chris\Documents\git\https-checker\obj\Release\netcoreapp2.0\https-checker.csproj.CoreCompileInputs.cache
+C:\Users\Chris\Documents\git\https-checker\obj\Release\netcoreapp2.0\https-checker.AssemblyInfoInputs.cache
+C:\Users\Chris\Documents\git\https-checker\obj\Release\netcoreapp2.0\https-checker.AssemblyInfo.cs
+C:\Users\Chris\Documents\git\https-checker\obj\Release\netcoreapp2.0\https-checker.dll
+C:\Users\Chris\Documents\git\https-checker\obj\Release\netcoreapp2.0\https-checker.pdb
