@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.IO;
 using System.Threading.Tasks;
 using CommonMark;
 using CommonMark.Syntax;
@@ -20,21 +17,28 @@ namespace https_checker
 
                 foreach (var node in document.AsEnumerable())
                 {
-                    if (node.IsOpening && node.Inline != null && node.Inline.Tag == InlineTag.Link)
-                    {
-                        var targetUrl = node.Inline.TargetUrl;
-                        if (targetUrl.StartsWith("http://"))
-                        {
-                            var httpsUrl = HttpsChecker.FindHttpsFor(targetUrl);
-                            if (httpsUrl != null)
-                                fileAsText = fileAsText.Replace(targetUrl, httpsUrl);
-                        }
-                    }
+                    if (!IsStartOfLink(node))
+                        continue;
+
+                    var targetUrl = node.Inline.TargetUrl;
+                    if (!targetUrl.StartsWith("http://"))
+                        continue;
+
+                    var httpsUrl = HttpsChecker.FindUnredirectedHttpsFor(targetUrl);
+                    if (httpsUrl == null)
+                        continue;
+
+                    fileAsText = fileAsText.Replace(targetUrl, httpsUrl);
                 }
 
                 if (fileAsText != originalFile)
                     File.WriteAllText(f, fileAsText);
             });
+        }
+
+        private static bool IsStartOfLink(EnumeratorEntry node)
+        {
+            return node.IsOpening && node.Inline != null && node.Inline.Tag == InlineTag.Link;
         }
     }
 }
