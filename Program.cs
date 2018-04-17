@@ -6,7 +6,7 @@ namespace https_checker
     {
         static void Main(string[] args)
         {
-            LinkReplacer.ReplaceIn(@"C:\Users\Chris\Documents\git\docs\docs\visual-basic");
+            LinkReplacer.ReplaceIn(args[0]);
         }
     }
 }

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "https-checker": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\ChristopherMaddock\\git\\dotnet-api-docs\\xml"
+    }
+  }
+}
