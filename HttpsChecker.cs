@@ -50,6 +50,9 @@ namespace https_checker
                 return null;
             }
 
+            if (responseUri.Host == "msdn.microsoft.com")
+                return null;
+
             Console.WriteLine($"Successful URI found: {inputHttpsUri}");
             return inputHttpsUri.AbsoluteUri;
         }

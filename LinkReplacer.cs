@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Concurrent;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using CommonMark;
@@ -10,6 +12,8 @@ namespace https_checker
     {
         public static void ReplaceIn(string dir)
         {
+            var modifiedDomains = new ConcurrentDictionary<string, string>();
+
             Parallel.ForEach(Directory.GetFiles(dir, "*.xml", SearchOption.AllDirectories), f =>
             {
                 Encoding encoding = GetEncoding(f);
@@ -32,11 +36,16 @@ namespace https_checker
                         continue;
 
                     fileAsText = fileAsText.Replace(targetUrl, httpsUrl);
+                    modifiedDomains.TryAdd(new Uri(httpsUrl).Host, string.Empty);
                 }
 
                 if (fileAsText != originalFile)
                     File.WriteAllText(f, fileAsText, encoding);
             });
+
+            Console.WriteLine("Modified Domains include:");
+            foreach (var domain in modifiedDomains.Keys)
+                Console.WriteLine(domain);
         }
 
         private static bool IsStartOfLink(EnumeratorEntry node)
